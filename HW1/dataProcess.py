@@ -21,19 +21,51 @@ luggage=df['Luggagecap'].tolist()
 safetyRating=df['Safetyrating'].tolist()
 vehicles=df['VehicleClass'].tolist()
 
-print(len(price))
 
+#3
+med_price=[]
+for i in range(len(price)): 
+    if price[i]=='med':
+        med_price.append(i)
+print(med_price)
+
+
+#4
+passN=[]
+for i in range(len(price)): 
+    if price[i]=='med':
+        passN.append(passengers[i])
+print(passN)
+
+
+#5
+NotEffAuto=[]
+for i in range(len(price)): 
+    if price[i]=='high' and maintenance[i]!='low':
+        passN.append(i)
+print(passN)
+
+
+
+#6
 priceIndexes = [p for p in range(len(price)) if price[p]=='med']
 print(priceIndexes)
 
 
 
+# 7 using list comprehension 
+targetPassNum=[passengers[passNum] for passNum in priceIndexes]
+print(targetPassNum)
+
+#8 
+effecientAuto=[(p) for p in range(len(price)) if (price[p]=='high' and maintenance[p]!='low')]
+print(effecientAuto)
 
 
-# price =[print(p) for p in range(len(price)) if p=='med']
-# print(price)
 
 
 
-# maintenance=[m for m in maintenance ]
-# print(maintenance)
+#Nested List Comprehension:
+nlist = [[1, 2, 3], ['A', 'B', 'C'], [4, 5], ['D', 'E'] ]
+newList= [ n for sublist in nlist for n in sublist]
+print(newList)
