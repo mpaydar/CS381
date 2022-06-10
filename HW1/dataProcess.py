@@ -11,7 +11,7 @@ luggage=[]
 safetyRating=[]
 vehicle=[]
 
-
+# print(df)
 
 price=df['Price'].tolist()
 maintenance=df[' Maintenancecost'].tolist()
@@ -42,8 +42,8 @@ print(passN)
 NotEffAuto=[]
 for i in range(len(price)): 
     if price[i]=='high' and maintenance[i]!='low':
-        passN.append(i)
-print(passN)
+        NotEffAuto.append(i)
+print(NotEffAuto)
 
 
 
