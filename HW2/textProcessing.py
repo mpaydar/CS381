@@ -14,31 +14,69 @@ substring2=[]
 
 
 
-character_dictionary={}
-def checkCharacter(review):
+numberList=[]
+def listNumbers(list_review):
+    for i in list_review:
+        if i!='':
+            numberList.append(i)
+    return numberList
+
+
+
+
+character_dictionary=[]
+def NameList(review):
     for i in review:
         white_space=i.count(' ')
         # print(white_space)
         if white_space==0:
-            character_dictionary[i]=["Got NO Title","Got NO Last Name", "Got No Middle Name"]
+            character_dictionary.append(i)
         if white_space==1:
-            character_dictionary[i]=["Got NO Title","Got ONE Last Name", "Got No Middle Name"]
+            character_dictionary.append(i)
         elif white_space==2:
-            character_dictionary[i]=["Got ONE Title","Got ONE Last Name", "Got No Middle Name"]
+            character_dictionary.append(i)
         elif white_space==3:
-            character_dictionary[i]=["Got ONE Title","Got ONE Last Name", "Got ONE Middle Name"]
+            character_dictionary.append(i)
     return character_dictionary
 
 
+NameCheckOut=[]
+def checkLastOrMiddleName(review):
+    r="Dr. Moe Bayat"
+    regex="[A-Za-z]*\s.+"
+    for i in range(len(review)):
+         r=re.search(regex,review[i])
+         if r!=None:
+            NameCheckOut.append(True)
+         else:
+            NameCheckOut.append(False)
+    print(NameCheckOut ,'\n')    
 
 
 
+
+
+
+
+
+title1=[]
+def checkTitle(review):
+    regex="^[A-Za-z]*\."
+    for i in range(len(review)):
+        r=re.search(regex,review[i])
+        if r!=None:
+            title1.append(True)
+        else:
+            title1.append(False)
+    print(title1 ,'\n')
 
 
 
 
 r1=re.findall("\d*",text)
-print("This is the list of all numbers within the given text",r1)
+print(len(r1))
+result_n=listNumbers(r1)
+print("This is the list of all numbers within the given text",result_n)
 title=False
 list=[]
 dictionary={}
@@ -47,7 +85,7 @@ LastName=False
 blank=0
 NotBlank=0
 r2=re.findall("[A-Za-z]*\.?",text)
-print("This is the list of all the names within the given text",r2)
+# print("This is the list of all the names within the given text",r2)
 substring=""
 for i in r2:
     if i != '':
@@ -77,8 +115,11 @@ for i in list:
     if i!='':
         i=i.rstrip()
         final_list.append(i)
-result=checkCharacter(final_list)
-print(result)
+result=NameList(final_list)
+print("This are the names listed in the given string:",result)
+checkTitle(final_list)
+checkLastOrMiddleName(final_list)
+
 
 
 
